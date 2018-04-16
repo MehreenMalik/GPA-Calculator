@@ -7,7 +7,7 @@ To run an executable version of the program download the jar from the latest rel
 <br>
 
 ###### Version v0.0.1:
-[![Opening the program view] (https://raw.githubusercontent.com/mehreenmalik/itb-gpa-calculator/master/screenshots/input.png)]
+![Opening the program view] (https://raw.githubusercontent.com/mehreenmalik/itb-gpa-calculator/master/screenshots/input.png)
 <br>
 - Allows user to select number of subjects and calculate GPA. 
 <br>
