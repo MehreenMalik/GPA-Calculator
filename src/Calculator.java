@@ -62,6 +62,10 @@ public class Calculator extends JFrame implements ActionListener
 		    		
 		            JLabel labelSubject1 = new JLabel("Subject 1");
 		    		tfGrade1 = new JTextField(5);
+		    		
+		    		//TODO: ADD verifier
+		    		//tfGrade1.setInputVerifier(new GradeInputVerifier());
+		    		
 		    		tfCredit1 = new JTextField(5);
 		    		tfValue1 = new JLabel(" ");
 		    		
@@ -1205,50 +1209,29 @@ public class Calculator extends JFrame implements ActionListener
 		setSize(300,320);
 	}
 	
+	//Instantiates Calculator widow
 	public static void main(String [] args)
 	{
 		new Calculator();
 	}
 
+	//Retrieves grades and inserts GPAs
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
+		Gradesbook grades = new Gradesbook();
+		
 		if(i==1)
 		{
-			String grade = tfGrade1.getText();	
-			double gpv=0;
-			switch (grade.toUpperCase())
-			{
-	            case "A":
-	            	gpv = 4;
-	                break;
-	            case "B+":
-	            	gpv = 3.5;
-	                break;
-	            case "B":
-	            	gpv = 3;
-	                break;
-	            case "B-":
-	            	gpv = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv = 2.50;
-	            	break;
-	            case "C":
-	            	gpv = 2.00;
-	            	break;
-	            case "D":
-	            	gpv = 1.50;
-	            	break;
-	            case "F":
-	            	gpv = 0;
-	            	break;
-	            case "G":
-	            	gpv = 0;
-	            	break;
-			}
+			String grade = tfGrade1.getText().toUpperCase();
+			checkGrade(grade);
+			double gpv = grades.getGrade(grade);
 			
 			int credit = Integer.parseInt(tfCredit1.getText());
+			if (credit>5.00 || credit<0.01)
+			{
+				JOptionPane.showMessageDialog(null, "Please enter lettered grades only.");
+			}
 			int totalCredit = credit;
 			
 			double value = gpv*credit;
@@ -1258,73 +1241,16 @@ public class Calculator extends JFrame implements ActionListener
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
 		}
+		
 		else if(i==2)
 		{
-			String grade1 = tfGrade1.getText();	
-			double gpv1=0;
-			switch (grade1.toUpperCase())
-			{
-	            case "A":
-	            	gpv1 = 4;
-	                break;
-	            case "B+":
-	            	gpv1 = 3.5;
-	                break;
-	            case "B":
-	            	gpv1 = 3;
-	                break;
-	            case "B-":
-	            	gpv1 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv1 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv1 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv1 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv1 = 0;
-	            	break;
-	            case "G":
-	            	gpv1 = 0;
-	            	break;
-			}
+			String grade1 = tfGrade1.getText().toUpperCase();
+			checkGrade(grade1);
+			double gpv1 = grades.getGrade(grade1);
 			
-			String grade2 = tfGrade1.getText();	
-			double gpv2=0;
-			switch (grade2.toUpperCase())
-			{
-	            case "A":
-	            	gpv2 = 4;
-	                break;
-	            case "B+":
-	            	gpv2 = 3.5;
-	                break;
-	            case "B":
-	            	gpv2 = 3;
-	                break;
-	            case "B-":
-	            	gpv2 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv2 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv2 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv2 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv2 = 0;
-	            	break;
-	            case "G":
-	            	gpv2 = 0;
-	            	break;
-			}
+			String grade2 = tfGrade2.getText().toUpperCase();
+			checkGrade(grade2);
+			double gpv2 = grades.getGrade(grade2);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
 			int credit2 = Integer.parseInt(tfCredit2.getText());
@@ -1340,106 +1266,20 @@ public class Calculator extends JFrame implements ActionListener
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
 		}
+		
 		else if(i==3)
 		{
-			String grade1 = tfGrade1.getText();	
-			double gpv1=0;
-			switch (grade1.toUpperCase())
-			{
-	            case "A":
-	            	gpv1 = 4;
-	                break;
-	            case "B+":
-	            	gpv1 = 3.5;
-	                break;
-	            case "B":
-	            	gpv1 = 3;
-	                break;
-	            case "B-":
-	            	gpv1 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv1 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv1 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv1 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv1 = 0;
-	            	break;
-	            case "G":
-	            	gpv1 = 0;
-	            	break;
-			}
+			String grade1 = tfGrade1.getText().toUpperCase();
+			checkGrade(grade1);
+			double gpv1 = grades.getGrade(grade1);
 			
-			String grade2 = tfGrade2.getText();	
-			double gpv2=0;
-			switch (grade2.toUpperCase())
-			{
-	            case "A":
-	            	gpv2 = 4;
-	                break;
-	            case "B+":
-	            	gpv2 = 3.5;
-	                break;
-	            case "B":
-	            	gpv2 = 3;
-	                break;
-	            case "B-":
-	            	gpv2 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv2 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv2 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv2 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv2 = 0;
-	            	break;
-	            case "G":
-	            	gpv2 = 0;
-	            	break;
-			}
+			String grade2 = tfGrade2.getText().toUpperCase();
+			checkGrade(grade2);
+			double gpv2 = grades.getGrade(grade2);
 			
-			String grade3 = tfGrade3.getText();	
-			double gpv3=0;
-			switch (grade3.toUpperCase())
-			{
-	            case "A":
-	            	gpv3 = 4;
-	                break;
-	            case "B+":
-	            	gpv3 = 3.5;
-	                break;
-	            case "B":
-	            	gpv3 = 3;
-	                break;
-	            case "B-":
-	            	gpv3 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv3 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv3 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv3 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv3 = 0;
-	            	break;
-	            case "G":
-	            	gpv3 = 0;
-	            	break;
-			}
+			String grade3 = tfGrade3.getText().toUpperCase();
+			checkGrade(grade3);
+			double gpv3 = grades.getGrade(grade3);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
 			int credit2 = Integer.parseInt(tfCredit2.getText());
@@ -1458,139 +1298,24 @@ public class Calculator extends JFrame implements ActionListener
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
 		}
+		
 		else if(i==4)
 		{
-			String grade1 = tfGrade1.getText();	
-			double gpv1=0;
-			switch (grade1.toUpperCase())
-			{
-	            case "A":
-	            	gpv1 = 4;
-	                break;
-	            case "B+":
-	            	gpv1 = 3.5;
-	                break;
-	            case "B":
-	            	gpv1 = 3;
-	                break;
-	            case "B-":
-	            	gpv1 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv1 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv1 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv1 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv1 = 0;
-	            	break;
-	            case "G":
-	            	gpv1 = 0;
-	            	break;
-			}
+			String grade1 = tfGrade1.getText().toUpperCase();
+			checkGrade(grade1);
+			double gpv1 = grades.getGrade(grade1);
 			
-			String grade2 = tfGrade2.getText();	
-			double gpv2=0;
-			switch (grade2.toUpperCase())
-			{
-	            case "A":
-	            	gpv2 = 4;
-	                break;
-	            case "B+":
-	            	gpv2 = 3.5;
-	                break;
-	            case "B":
-	            	gpv2 = 3;
-	                break;
-	            case "B-":
-	            	gpv2 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv2 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv2 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv2 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv2 = 0;
-	            	break;
-	            case "G":
-	            	gpv2 = 0;
-	            	break;
-			}
+			String grade2 = tfGrade2.getText().toUpperCase();
+			checkGrade(grade2);
+			double gpv2 = grades.getGrade(grade2);
 			
-			String grade3 = tfGrade3.getText();	
-			double gpv3=0;
-			switch (grade3.toUpperCase())
-			{
-	            case "A":
-	            	gpv3 = 4;
-	                break;
-	            case "B+":
-	            	gpv3 = 3.5;
-	                break;
-	            case "B":
-	            	gpv3 = 3;
-	                break;
-	            case "B-":
-	            	gpv3 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv3 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv3 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv3 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv3 = 0;
-	            	break;
-	            case "G":
-	            	gpv3 = 0;
-	            	break;
-			}
+			String grade3 = tfGrade3.getText().toUpperCase();
+			checkGrade(grade3);
+			double gpv3 = grades.getGrade(grade3);
 			
-			String grade4 = tfGrade4.getText();	
-			double gpv4=0;
-			switch (grade4.toUpperCase())
-			{
-	            case "A":
-	            	gpv4 = 4;
-	                break;
-	            case "B+":
-	            	gpv4 = 3.5;
-	                break;
-	            case "B":
-	            	gpv4 = 3;
-	                break;
-	            case "B-":
-	            	gpv4 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv4 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv4 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv4 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv4 = 0;
-	            	break;
-	            case "G":
-	            	gpv4 = 0;
-	            	break;
-			}
+			String grade4 = tfGrade4.getText().toUpperCase();
+			checkGrade(grade4);
+			double gpv4 = grades.getGrade(grade4);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
 			int credit2 = Integer.parseInt(tfCredit2.getText());
@@ -1612,172 +1337,28 @@ public class Calculator extends JFrame implements ActionListener
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
 		}
+		
 		else if(i==5)
 		{
-			String grade1 = tfGrade1.getText();	
-			double gpv1=0;
-			switch (grade1.toUpperCase())
-			{
-	            case "A":
-	            	gpv1 = 4;
-	                break;
-	            case "B+":
-	            	gpv1 = 3.5;
-	                break;
-	            case "B":
-	            	gpv1 = 3;
-	                break;
-	            case "B-":
-	            	gpv1 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv1 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv1 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv1 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv1 = 0;
-	            	break;
-	            case "G":
-	            	gpv1 = 0;
-	            	break;
-			}
+			String grade1 = tfGrade1.getText().toUpperCase();
+			checkGrade(grade1);
+			double gpv1 = grades.getGrade(grade1);
 			
-			String grade2 = tfGrade2.getText();	
-			double gpv2=0;
-			switch (grade2.toUpperCase())
-			{
-	            case "A":
-	            	gpv2 = 4;
-	                break;
-	            case "B+":
-	            	gpv2 = 3.5;
-	                break;
-	            case "B":
-	            	gpv2 = 3;
-	                break;
-	            case "B-":
-	            	gpv2 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv2 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv2 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv2 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv2 = 0;
-	            	break;
-	            case "G":
-	            	gpv2 = 0;
-	            	break;
-			}
+			String grade2 = tfGrade2.getText().toUpperCase();
+			checkGrade(grade2);
+			double gpv2 = grades.getGrade(grade2);
 			
-			String grade3 = tfGrade3.getText();	
-			double gpv3=0;
-			switch (grade3.toUpperCase())
-			{
-	            case "A":
-	            	gpv3 = 4;
-	                break;
-	            case "B+":
-	            	gpv3 = 3.5;
-	                break;
-	            case "B":
-	            	gpv3 = 3;
-	                break;
-	            case "B-":
-	            	gpv3 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv3 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv3 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv3 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv3 = 0;
-	            	break;
-	            case "G":
-	            	gpv3 = 0;
-	            	break;
-			}
+			String grade3 = tfGrade3.getText().toUpperCase();
+			checkGrade(grade3);
+			double gpv3 = grades.getGrade(grade3);
 			
-			String grade4 = tfGrade4.getText();	
-			double gpv4=0;
-			switch (grade4.toUpperCase())
-			{
-	            case "A":
-	            	gpv4 = 4;
-	                break;
-	            case "B+":
-	            	gpv4 = 3.5;
-	                break;
-	            case "B":
-	            	gpv4 = 3;
-	                break;
-	            case "B-":
-	            	gpv4 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv4 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv4 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv4 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv4 = 0;
-	            	break;
-	            case "G":
-	            	gpv4 = 0;
-	            	break;
-			}
+			String grade4 = tfGrade4.getText().toUpperCase();
+			checkGrade(grade4);
+			double gpv4 = grades.getGrade(grade4);
 			
-			String grade5 = tfGrade5.getText();	
-			double gpv5=0;
-			switch (grade5.toUpperCase())
-			{
-	            case "A":
-	            	gpv5 = 4;
-	                break;
-	            case "B+":
-	            	gpv5 = 3.5;
-	                break;
-	            case "B":
-	            	gpv5 = 3;
-	                break;
-	            case "B-":
-	            	gpv5 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv5 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv5 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv5 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv5 = 0;
-	            	break;
-	            case "G":
-	            	gpv5 = 0;
-	            	break;
-			}
+			String grade5 = tfGrade5.getText().toUpperCase();
+			checkGrade(grade5);	
+			double gpv5 = grades.getGrade(grade5);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
 			int credit2 = Integer.parseInt(tfCredit2.getText());
@@ -1802,205 +1383,32 @@ public class Calculator extends JFrame implements ActionListener
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
 		}
+		
 		else if(i==6)
 		{
-			String grade1 = tfGrade1.getText();	
-			double gpv1=0;
-			switch (grade1.toUpperCase())
-			{
-	            case "A":
-	            	gpv1 = 4;
-	                break;
-	            case "B+":
-	            	gpv1 = 3.5;
-	                break;
-	            case "B":
-	            	gpv1 = 3;
-	                break;
-	            case "B-":
-	            	gpv1 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv1 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv1 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv1 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv1 = 0;
-	            	break;
-	            case "G":
-	            	gpv1 = 0;
-	            	break;
-			}
+			String grade1 = tfGrade1.getText().toUpperCase();
+			checkGrade(grade1);
+			double gpv1 = grades.getGrade(grade1);
 			
-			String grade2 = tfGrade2.getText();	
-			double gpv2=0;
-			switch (grade2.toUpperCase())
-			{
-	            case "A":
-	            	gpv2 = 4;
-	                break;
-	            case "B+":
-	            	gpv2 = 3.5;
-	                break;
-	            case "B":
-	            	gpv2 = 3;
-	                break;
-	            case "B-":
-	            	gpv2 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv2 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv2 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv2 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv2 = 0;
-	            	break;
-	            case "G":
-	            	gpv2 = 0;
-	            	break;
-			}
+			String grade2 = tfGrade2.getText().toUpperCase();
+			checkGrade(grade2);
+			double gpv2 = grades.getGrade(grade2);
 			
-			String grade3 = tfGrade3.getText();	
-			double gpv3=0;
-			switch (grade3.toUpperCase())
-			{
-	            case "A":
-	            	gpv3 = 4;
-	                break;
-	            case "B+":
-	            	gpv3 = 3.5;
-	                break;
-	            case "B":
-	            	gpv3 = 3;
-	                break;
-	            case "B-":
-	            	gpv3 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv3 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv3 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv3 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv3 = 0;
-	            	break;
-	            case "G":
-	            	gpv3 = 0;
-	            	break;
-			}
+			String grade3 = tfGrade3.getText().toUpperCase();
+			checkGrade(grade3);
+			double gpv3 = grades.getGrade(grade3);
 			
-			String grade4 = tfGrade4.getText();	
-			double gpv4=0;
-			switch (grade4.toUpperCase())
-			{
-	            case "A":
-	            	gpv4 = 4;
-	                break;
-	            case "B+":
-	            	gpv4 = 3.5;
-	                break;
-	            case "B":
-	            	gpv4 = 3;
-	                break;
-	            case "B-":
-	            	gpv4 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv4 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv4 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv4 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv4 = 0;
-	            	break;
-	            case "G":
-	            	gpv4 = 0;
-	            	break;
-			}
+			String grade4 = tfGrade4.getText().toUpperCase();
+			checkGrade(grade4);
+			double gpv4 = grades.getGrade(grade4);
 			
-			String grade5 = tfGrade5.getText();	
-			double gpv5=0;
-			switch (grade5.toUpperCase())
-			{
-	            case "A":
-	            	gpv5 = 4;
-	                break;
-	            case "B+":
-	            	gpv5 = 3.5;
-	                break;
-	            case "B":
-	            	gpv5 = 3;
-	                break;
-	            case "B-":
-	            	gpv5 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv5 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv5 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv5 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv5 = 0;
-	            	break;
-	            case "G":
-	            	gpv5 = 0;
-	            	break;
-			}
+			String grade5 = tfGrade5.getText().toUpperCase();
+			checkGrade(grade5);	
+			double gpv5 = grades.getGrade(grade5);
 			
-			String grade6 = tfGrade6.getText();	
-			double gpv6=0;
-			switch (grade6.toUpperCase())
-			{
-	            case "A":
-	            	gpv6 = 4;
-	                break;
-	            case "B+":
-	            	gpv6 = 3.5;
-	                break;
-	            case "B":
-	            	gpv6 = 3;
-	                break;
-	            case "B-":
-	            	gpv6 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv6 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv6 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv6 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv6 = 0;
-	            	break;
-	            case "G":
-	            	gpv6 = 0;
-	            	break;
-			}
+			String grade6 = tfGrade6.getText().toUpperCase();
+			checkGrade(grade6);	
+			double gpv6 = grades.getGrade(grade6);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
 			int credit2 = Integer.parseInt(tfCredit2.getText());
@@ -2028,238 +1436,36 @@ public class Calculator extends JFrame implements ActionListener
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
 		}
+		
 		else if(i==7)
 		{
-			String grade1 = tfGrade1.getText();	
-			double gpv1=0;
-			switch (grade1.toUpperCase())
-			{
-	            case "A":
-	            	gpv1 = 4;
-	                break;
-	            case "B+":
-	            	gpv1 = 3.5;
-	                break;
-	            case "B":
-	            	gpv1 = 3;
-	                break;
-	            case "B-":
-	            	gpv1 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv1 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv1 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv1 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv1 = 0;
-	            	break;
-	            case "G":
-	            	gpv1 = 0;
-	            	break;
-			}
+			String grade1 = tfGrade1.getText().toUpperCase();
+			checkGrade(grade1);
+			double gpv1 = grades.getGrade(grade1);
 			
-			String grade2 = tfGrade2.getText();	
-			double gpv2=0;
-			switch (grade2.toUpperCase())
-			{
-	            case "A":
-	            	gpv2 = 4;
-	                break;
-	            case "B+":
-	            	gpv2 = 3.5;
-	                break;
-	            case "B":
-	            	gpv2 = 3;
-	                break;
-	            case "B-":
-	            	gpv2 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv2 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv2 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv2 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv2 = 0;
-	            	break;
-	            case "G":
-	            	gpv2 = 0;
-	            	break;
-			}
+			String grade2 = tfGrade2.getText().toUpperCase();
+			checkGrade(grade2);
+			double gpv2 = grades.getGrade(grade2);
 			
-			String grade3 = tfGrade3.getText();	
-			double gpv3=0;
-			switch (grade3.toUpperCase())
-			{
-	            case "A":
-	            	gpv3 = 4;
-	                break;
-	            case "B+":
-	            	gpv3 = 3.5;
-	                break;
-	            case "B":
-	            	gpv3 = 3;
-	                break;
-	            case "B-":
-	            	gpv3 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv3 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv3 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv3 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv3 = 0;
-	            	break;
-	            case "G":
-	            	gpv3 = 0;
-	            	break;
-			}
+			String grade3 = tfGrade3.getText().toUpperCase();
+			checkGrade(grade3);
+			double gpv3 = grades.getGrade(grade3);
 			
-			String grade4 = tfGrade4.getText();	
-			double gpv4=0;
-			switch (grade4.toUpperCase())
-			{
-	            case "A":
-	            	gpv4 = 4;
-	                break;
-	            case "B+":
-	            	gpv4 = 3.5;
-	                break;
-	            case "B":
-	            	gpv4 = 3;
-	                break;
-	            case "B-":
-	            	gpv4 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv4 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv4 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv4 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv4 = 0;
-	            	break;
-	            case "G":
-	            	gpv4 = 0;
-	            	break;
-			}
+			String grade4 = tfGrade4.getText().toUpperCase();
+			checkGrade(grade4);
+			double gpv4 = grades.getGrade(grade4);
 			
-			String grade5 = tfGrade5.getText();	
-			double gpv5=0;
-			switch (grade5.toUpperCase())
-			{
-	            case "A":
-	            	gpv5 = 4;
-	                break;
-	            case "B+":
-	            	gpv5 = 3.5;
-	                break;
-	            case "B":
-	            	gpv5 = 3;
-	                break;
-	            case "B-":
-	            	gpv5 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv5 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv5 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv5 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv5 = 0;
-	            	break;
-	            case "G":
-	            	gpv5 = 0;
-	            	break;
-			}
+			String grade5 = tfGrade5.getText().toUpperCase();
+			checkGrade(grade5);	
+			double gpv5 = grades.getGrade(grade5);
 			
-			String grade6 = tfGrade6.getText();	
-			double gpv6=0;
-			switch (grade6.toUpperCase())
-			{
-	            case "A":
-	            	gpv6 = 4;
-	                break;
-	            case "B+":
-	            	gpv6 = 3.5;
-	                break;
-	            case "B":
-	            	gpv6 = 3;
-	                break;
-	            case "B-":
-	            	gpv6 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv6 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv6 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv6 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv6 = 0;
-	            	break;
-	            case "G":
-	            	gpv6 = 0;
-	            	break;
-			}
+			String grade6 = tfGrade6.getText().toUpperCase();
+			checkGrade(grade6);
+			double gpv6 = grades.getGrade(grade6);
 			
-			String grade7 = tfGrade7.getText();	
-			double gpv7=0;
-			switch (grade7.toUpperCase())
-			{
-	            case "A":
-	            	gpv7 = 4;
-	                break;
-	            case "B+":
-	            	gpv7 = 3.5;
-	                break;
-	            case "B":
-	            	gpv7 = 3;
-	                break;
-	            case "B-":
-	            	gpv7 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv7 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv7 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv7 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv7 = 0;
-	            	break;
-	            case "G":
-	            	gpv7 = 0;
-	            	break;
-			}
+			String grade7 = tfGrade7.getText().toUpperCase();
+			checkGrade(grade7);	
+			double gpv7 = grades.getGrade(grade7);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
 			int credit2 = Integer.parseInt(tfCredit2.getText());
@@ -2290,271 +1496,40 @@ public class Calculator extends JFrame implements ActionListener
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
 		}
+		
 		else if(i==8)
 		{
-			String grade1 = tfGrade1.getText();	
-			double gpv1=0;
-			switch (grade1.toUpperCase())
-			{
-	            case "A":
-	            	gpv1 = 4;
-	                break;
-	            case "B+":
-	            	gpv1 = 3.5;
-	                break;
-	            case "B":
-	            	gpv1 = 3;
-	                break;
-	            case "B-":
-	            	gpv1 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv1 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv1 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv1 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv1 = 0;
-	            	break;
-	            case "G":
-	            	gpv1 = 0;
-	            	break;
-			}
+			String grade1 = tfGrade1.getText().toUpperCase();
+			checkGrade(grade1);	
+			double gpv1 = grades.getGrade(grade1);
 			
-			String grade2 = tfGrade2.getText();	
-			double gpv2=0;
-			switch (grade2.toUpperCase())
-			{
-	            case "A":
-	            	gpv2 = 4;
-	                break;
-	            case "B+":
-	            	gpv2 = 3.5;
-	                break;
-	            case "B":
-	            	gpv2 = 3;
-	                break;
-	            case "B-":
-	            	gpv2 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv2 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv2 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv2 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv2 = 0;
-	            	break;
-	            case "G":
-	            	gpv2 = 0;
-	            	break;
-			}
+			String grade2 = tfGrade2.getText().toUpperCase();
+			checkGrade(grade2);
+			double gpv2 = grades.getGrade(grade2);
 			
-			String grade3 = tfGrade3.getText();	
-			double gpv3=0;
-			switch (grade3.toUpperCase())
-			{
-	            case "A":
-	            	gpv3 = 4;
-	                break;
-	            case "B+":
-	            	gpv3 = 3.5;
-	                break;
-	            case "B":
-	            	gpv3 = 3;
-	                break;
-	            case "B-":
-	            	gpv3 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv3 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv3 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv3 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv3 = 0;
-	            	break;
-	            case "G":
-	            	gpv3 = 0;
-	            	break;
-			}
+			String grade3 = tfGrade3.getText().toUpperCase();
+			checkGrade(grade3);
+			double gpv3 = grades.getGrade(grade3);
 			
-			String grade4 = tfGrade4.getText();	
-			double gpv4=0;
-			switch (grade4.toUpperCase())
-			{
-	            case "A":
-	            	gpv4 = 4;
-	                break;
-	            case "B+":
-	            	gpv4 = 3.5;
-	                break;
-	            case "B":
-	            	gpv4 = 3;
-	                break;
-	            case "B-":
-	            	gpv4 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv4 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv4 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv4 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv4 = 0;
-	            	break;
-	            case "G":
-	            	gpv4 = 0;
-	            	break;
-			}
+			String grade4 = tfGrade4.getText().toUpperCase();
+			checkGrade(grade4);
+			double gpv4 = grades.getGrade(grade4);
 			
-			String grade5 = tfGrade5.getText();	
-			double gpv5=0;
-			switch (grade5.toUpperCase())
-			{
-	            case "A":
-	            	gpv5 = 4;
-	                break;
-	            case "B+":
-	            	gpv5 = 3.5;
-	                break;
-	            case "B":
-	            	gpv5 = 3;
-	                break;
-	            case "B-":
-	            	gpv5 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv5 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv5 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv5 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv5 = 0;
-	            	break;
-	            case "G":
-	            	gpv5 = 0;
-	            	break;
-			}
+			String grade5 = tfGrade5.getText().toUpperCase();
+			checkGrade(grade5);
+			double gpv5 = grades.getGrade(grade5);
 			
-			String grade6 = tfGrade6.getText();	
-			double gpv6=0;
-			switch (grade6.toUpperCase())
-			{
-	            case "A":
-	            	gpv6 = 4;
-	                break;
-	            case "B+":
-	            	gpv6 = 3.5;
-	                break;
-	            case "B":
-	            	gpv6 = 3;
-	                break;
-	            case "B-":
-	            	gpv6 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv6 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv6 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv6 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv6 = 0;
-	            	break;
-	            case "G":
-	            	gpv6 = 0;
-	            	break;
-			}
+			String grade6 = tfGrade6.getText().toUpperCase();
+			checkGrade(grade6);	
+			double gpv6 = grades.getGrade(grade6);
 			
-			String grade7 = tfGrade7.getText();	
-			double gpv7=0;
-			switch (grade7.toUpperCase())
-			{
-	            case "A":
-	            	gpv7 = 4;
-	                break;
-	            case "B+":
-	            	gpv7 = 3.5;
-	                break;
-	            case "B":
-	            	gpv7 = 3;
-	                break;
-	            case "B-":
-	            	gpv7 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv7 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv7 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv7 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv7 = 0;
-	            	break;
-	            case "G":
-	            	gpv7 = 0;
-	            	break;
-			}
+			String grade7 = tfGrade7.getText().toUpperCase();
+			checkGrade(grade7);
+			double gpv7 = grades.getGrade(grade7);
 			
-			String grade8 = tfGrade8.getText();	
-			double gpv8=0;
-			switch (grade8.toUpperCase())
-			{
-	            case "A":
-	            	gpv8 = 4;
-	                break;
-	            case "B+":
-	            	gpv8 = 3.5;
-	                break;
-	            case "B":
-	            	gpv8 = 3;
-	                break;
-	            case "B-":
-	            	gpv8 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv8 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv8 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv8 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv8 = 0;
-	            	break;
-	            case "G":
-	            	gpv8 = 0;
-	            	break;
-			}
+			String grade8 = tfGrade8.getText().toUpperCase();
+			checkGrade(grade8);
+			double gpv8 = grades.getGrade(grade8);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
 			int credit2 = Integer.parseInt(tfCredit2.getText());
@@ -2588,304 +1563,44 @@ public class Calculator extends JFrame implements ActionListener
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
 		}
+		
 		else if(i==9)
 		{
-			String grade1 = tfGrade1.getText();	
-			double gpv1=0;
-			switch (grade1.toUpperCase())
-			{
-	            case "A":
-	            	gpv1 = 4;
-	                break;
-	            case "B+":
-	            	gpv1 = 3.5;
-	                break;
-	            case "B":
-	            	gpv1 = 3;
-	                break;
-	            case "B-":
-	            	gpv1 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv1 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv1 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv1 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv1 = 0;
-	            	break;
-	            case "G":
-	            	gpv1 = 0;
-	            	break;
-			}
+			String grade1 = tfGrade1.getText().toUpperCase();
+			checkGrade(grade1);
+			double gpv1 = grades.getGrade(grade1);
 			
-			String grade2 = tfGrade2.getText();	
-			double gpv2=0;
-			switch (grade2.toUpperCase())
-			{
-	            case "A":
-	            	gpv2 = 4;
-	                break;
-	            case "B+":
-	            	gpv2 = 3.5;
-	                break;
-	            case "B":
-	            	gpv2 = 3;
-	                break;
-	            case "B-":
-	            	gpv2 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv2 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv2 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv2 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv2 = 0;
-	            	break;
-	            case "G":
-	            	gpv2 = 0;
-	            	break;
-			}
+			String grade2 = tfGrade2.getText().toUpperCase();
+			checkGrade(grade2);	
+			double gpv2 = grades.getGrade(grade2);
 			
-			String grade3 = tfGrade3.getText();	
-			double gpv3=0;
-			switch (grade3.toUpperCase())
-			{
-	            case "A":
-	            	gpv3 = 4;
-	                break;
-	            case "B+":
-	            	gpv3 = 3.5;
-	                break;
-	            case "B":
-	            	gpv3 = 3;
-	                break;
-	            case "B-":
-	            	gpv3 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv3 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv3 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv3 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv3 = 0;
-	            	break;
-	            case "G":
-	            	gpv3 = 0;
-	            	break;
-			}
+			String grade3 = tfGrade3.getText().toUpperCase();
+			checkGrade(grade3);	
+			double gpv3 = grades.getGrade(grade3);
 			
-			String grade4 = tfGrade4.getText();	
-			double gpv4=0;
-			switch (grade4.toUpperCase())
-			{
-	            case "A":
-	            	gpv4 = 4;
-	                break;
-	            case "B+":
-	            	gpv4 = 3.5;
-	                break;
-	            case "B":
-	            	gpv4 = 3;
-	                break;
-	            case "B-":
-	            	gpv4 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv4 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv4 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv4 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv4 = 0;
-	            	break;
-	            case "G":
-	            	gpv4 = 0;
-	            	break;
-			}
+			String grade4 = tfGrade4.getText().toUpperCase();
+			checkGrade(grade4);
+			double gpv4 = grades.getGrade(grade4);
 			
-			String grade5 = tfGrade5.getText();	
-			double gpv5=0;
-			switch (grade5.toUpperCase())
-			{
-	            case "A":
-	            	gpv5 = 4;
-	                break;
-	            case "B+":
-	            	gpv5 = 3.5;
-	                break;
-	            case "B":
-	            	gpv5 = 3;
-	                break;
-	            case "B-":
-	            	gpv5 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv5 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv5 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv5 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv5 = 0;
-	            	break;
-	            case "G":
-	            	gpv5 = 0;
-	            	break;
-			}
+			String grade5 = tfGrade5.getText().toUpperCase();
+			checkGrade(grade5);
+			double gpv5 = grades.getGrade(grade5);
 			
-			String grade6 = tfGrade6.getText();	
-			double gpv6=0;
-			switch (grade6.toUpperCase())
-			{
-	            case "A":
-	            	gpv6 = 4;
-	                break;
-	            case "B+":
-	            	gpv6 = 3.5;
-	                break;
-	            case "B":
-	            	gpv6 = 3;
-	                break;
-	            case "B-":
-	            	gpv6 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv6 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv6 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv6 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv6 = 0;
-	            	break;
-	            case "G":
-	            	gpv6 = 0;
-	            	break;
-			}
+			String grade6 = tfGrade6.getText().toUpperCase();
+			checkGrade(grade6);
+			double gpv6 = grades.getGrade(grade6);
 			
-			String grade7 = tfGrade7.getText();	
-			double gpv7=0;
-			switch (grade7.toUpperCase())
-			{
-	            case "A":
-	            	gpv7 = 4;
-	                break;
-	            case "B+":
-	            	gpv7 = 3.5;
-	                break;
-	            case "B":
-	            	gpv7 = 3;
-	                break;
-	            case "B-":
-	            	gpv7 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv7 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv7 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv7 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv7 = 0;
-	            	break;
-	            case "G":
-	            	gpv7 = 0;
-	            	break;
-			}
+			String grade7 = tfGrade7.getText().toUpperCase();
+			checkGrade(grade7);
+			double gpv7 = grades.getGrade(grade7);
 			
-			String grade8 = tfGrade8.getText();	
-			double gpv8=0;
-			switch (grade8.toUpperCase())
-			{
-	            case "A":
-	            	gpv8 = 4;
-	                break;
-	            case "B+":
-	            	gpv8 = 3.5;
-	                break;
-	            case "B":
-	            	gpv8 = 3;
-	                break;
-	            case "B-":
-	            	gpv8 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv8 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv8 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv8 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv8 = 0;
-	            	break;
-	            case "G":
-	            	gpv8 = 0;
-	            	break;
-			}
+			String grade8 = tfGrade8.getText().toUpperCase();
+			checkGrade(grade8);
+			double gpv8 = grades.getGrade(grade8);
 			
-			String grade9 = tfGrade9.getText();	
-			double gpv9=0;
-			switch (grade9.toUpperCase())
-			{
-	            case "A":
-	            	gpv9 = 4;
-	                break;
-	            case "B+":
-	            	gpv9 = 3.5;
-	                break;
-	            case "B":
-	            	gpv9 = 3;
-	                break;
-	            case "B-":
-	            	gpv9 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv9 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv9 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv9 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv9 = 0;
-	            	break;
-	            case "G":
-	            	gpv9 = 0;
-	            	break;
-			}
+			String grade9 = tfGrade9.getText().toUpperCase();
+			checkGrade(grade9);
+			double gpv9 = grades.getGrade(grade9);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
 			int credit2 = Integer.parseInt(tfCredit2.getText());
@@ -2922,337 +1637,48 @@ public class Calculator extends JFrame implements ActionListener
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
 		}
+		
 		else if(i==10)
 		{
-			String grade1 = tfGrade1.getText();	
-			double gpv1=0;
-			switch (grade1.toUpperCase())
-			{
-	            case "A":
-	            	gpv1 = 4;
-	                break;
-	            case "B+":
-	            	gpv1 = 3.5;
-	                break;
-	            case "B":
-	            	gpv1 = 3;
-	                break;
-	            case "B-":
-	            	gpv1 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv1 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv1 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv1 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv1 = 0;
-	            	break;
-	            case "G":
-	            	gpv1 = 0;
-	            	break;
-			}
+			String grade1 = tfGrade1.getText().toUpperCase();
+			checkGrade(grade1);
+			double gpv1 = grades.getGrade(grade1);
 			
-			String grade2 = tfGrade2.getText();	
-			double gpv2=0;
-			switch (grade2.toUpperCase())
-			{
-	            case "A":
-	            	gpv2 = 4;
-	                break;
-	            case "B+":
-	            	gpv2 = 3.5;
-	                break;
-	            case "B":
-	            	gpv2 = 3;
-	                break;
-	            case "B-":
-	            	gpv2 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv2 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv2 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv2 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv2 = 0;
-	            	break;
-	            case "G":
-	            	gpv2 = 0;
-	            	break;
-			}
+			String grade2 = tfGrade2.getText().toUpperCase();
+			checkGrade(grade2);
+			double gpv2 = grades.getGrade(grade2);
 			
-			String grade3 = tfGrade3.getText();	
-			double gpv3=0;
-			switch (grade3.toUpperCase())
-			{
-	            case "A":
-	            	gpv3 = 4;
-	                break;
-	            case "B+":
-	            	gpv3 = 3.5;
-	                break;
-	            case "B":
-	            	gpv3 = 3;
-	                break;
-	            case "B-":
-	            	gpv3 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv3 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv3 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv3 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv3 = 0;
-	            	break;
-	            case "G":
-	            	gpv3 = 0;
-	            	break;
-			}
+			String grade3 = tfGrade3.getText().toUpperCase();
+			checkGrade(grade3);	
+			double gpv3 = grades.getGrade(grade3);
 			
-			String grade4 = tfGrade4.getText();	
-			double gpv4=0;
-			switch (grade4.toUpperCase())
-			{
-	            case "A":
-	            	gpv4 = 4;
-	                break;
-	            case "B+":
-	            	gpv4 = 3.5;
-	                break;
-	            case "B":
-	            	gpv4 = 3;
-	                break;
-	            case "B-":
-	            	gpv4 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv4 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv4 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv4 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv4 = 0;
-	            	break;
-	            case "G":
-	            	gpv4 = 0;
-	            	break;
-			}
+			String grade4 = tfGrade4.getText().toUpperCase();
+			checkGrade(grade4);	
+			double gpv4 = grades.getGrade(grade4);
 			
-			String grade5 = tfGrade5.getText();	
-			double gpv5=0;
-			switch (grade5.toUpperCase())
-			{
-	            case "A":
-	            	gpv5 = 4;
-	                break;
-	            case "B+":
-	            	gpv5 = 3.5;
-	                break;
-	            case "B":
-	            	gpv5 = 3;
-	                break;
-	            case "B-":
-	            	gpv5 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv5 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv5 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv5 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv5 = 0;
-	            	break;
-	            case "G":
-	            	gpv5 = 0;
-	            	break;
-			}
+			String grade5 = tfGrade5.getText().toUpperCase();
+			checkGrade(grade5);
+			double gpv5 = grades.getGrade(grade5);
 			
-			String grade6 = tfGrade6.getText();	
-			double gpv6=0;
-			switch (grade6.toUpperCase())
-			{
-	            case "A":
-	            	gpv6 = 4;
-	                break;
-	            case "B+":
-	            	gpv6 = 3.5;
-	                break;
-	            case "B":
-	            	gpv6 = 3;
-	                break;
-	            case "B-":
-	            	gpv6 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv6 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv6 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv6 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv6 = 0;
-	            	break;
-	            case "G":
-	            	gpv6 = 0;
-	            	break;
-			}
+			String grade6 = tfGrade6.getText().toUpperCase();
+			checkGrade(grade6);	
+			double gpv6 = grades.getGrade(grade6);
 			
-			String grade7 = tfGrade7.getText();	
-			double gpv7=0;
-			switch (grade7.toUpperCase())
-			{
-	            case "A":
-	            	gpv7 = 4;
-	                break;
-	            case "B+":
-	            	gpv7 = 3.5;
-	                break;
-	            case "B":
-	            	gpv7 = 3;
-	                break;
-	            case "B-":
-	            	gpv7 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv7 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv7 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv7 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv7 = 0;
-	            	break;
-	            case "G":
-	            	gpv7 = 0;
-	            	break;
-			}
+			String grade7 = tfGrade7.getText().toUpperCase();
+			checkGrade(grade7);
+			double gpv7 = grades.getGrade(grade7);
 			
-			String grade8 = tfGrade8.getText();	
-			double gpv8=0;
-			switch (grade8.toUpperCase())
-			{
-	            case "A":
-	            	gpv8 = 4;
-	                break;
-	            case "B+":
-	            	gpv8 = 3.5;
-	                break;
-	            case "B":
-	            	gpv8 = 3;
-	                break;
-	            case "B-":
-	            	gpv8 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv8 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv8 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv8 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv8 = 0;
-	            	break;
-	            case "G":
-	            	gpv8 = 0;
-	            	break;
-			}
+			String grade8 = tfGrade8.getText().toUpperCase();
+			checkGrade(grade8);
+			double gpv8 = grades.getGrade(grade8);
 			
-			String grade9 = tfGrade9.getText();	
-			double gpv9=0;
-			switch (grade9.toUpperCase())
-			{
-	            case "A":
-	            	gpv9 = 4;
-	                break;
-	            case "B+":
-	            	gpv9 = 3.5;
-	                break;
-	            case "B":
-	            	gpv9 = 3;
-	                break;
-	            case "B-":
-	            	gpv9 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv9 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv9 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv9 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv9 = 0;
-	            	break;
-	            case "G":
-	            	gpv9 = 0;
-	            	break;
-			}
+			String grade9 = tfGrade9.getText().toUpperCase();
+			checkGrade(grade9);
+			double gpv9 = grades.getGrade(grade9);
 			
-			String grade10 = tfGrade10.getText();	
-			double gpv10=0;
-			switch (grade10.toUpperCase())
-			{
-	            case "A":
-	            	gpv10 = 4;
-	                break;
-	            case "B+":
-	            	gpv10 = 3.5;
-	                break;
-	            case "B":
-	            	gpv10 = 3;
-	                break;
-	            case "B-":
-	            	gpv10 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv10 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv10 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv10 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv10 = 0;
-	            	break;
-	            case "G":
-	            	gpv10 = 0;
-	            	break;
-			}
+			String grade10 = tfGrade10.getText().toUpperCase();
+			checkGrade(grade10);	
+			double gpv10 = grades.getGrade(grade10);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
 			int credit2 = Integer.parseInt(tfCredit2.getText());
@@ -3292,370 +1718,52 @@ public class Calculator extends JFrame implements ActionListener
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
 		}
+		
 		else if(i==11)
 		{
-			String grade1 = tfGrade1.getText();	
-			double gpv1=0;
-			switch (grade1.toUpperCase())
-			{
-	            case "A":
-	            	gpv1 = 4;
-	                break;
-	            case "B+":
-	            	gpv1 = 3.5;
-	                break;
-	            case "B":
-	            	gpv1 = 3;
-	                break;
-	            case "B-":
-	            	gpv1 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv1 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv1 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv1 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv1 = 0;
-	            	break;
-	            case "G":
-	            	gpv1 = 0;
-	            	break;
-			}
+			String grade1 = tfGrade1.getText().toUpperCase();
+			checkGrade(grade1);
+			double gpv1 = grades.getGrade(grade1);
 			
-			String grade2 = tfGrade2.getText();	
-			double gpv2=0;
-			switch (grade2.toUpperCase())
-			{
-	            case "A":
-	            	gpv2 = 4;
-	                break;
-	            case "B+":
-	            	gpv2 = 3.5;
-	                break;
-	            case "B":
-	            	gpv2 = 3;
-	                break;
-	            case "B-":
-	            	gpv2 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv2 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv2 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv2 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv2 = 0;
-	            	break;
-	            case "G":
-	            	gpv2 = 0;
-	            	break;
-			}
+			String grade2 = tfGrade2.getText().toUpperCase();
+			checkGrade(grade2);
+			double gpv2 = grades.getGrade(grade2);
 			
-			String grade3 = tfGrade3.getText();	
-			double gpv3=0;
-			switch (grade3.toUpperCase())
-			{
-	            case "A":
-	            	gpv3 = 4;
-	                break;
-	            case "B+":
-	            	gpv3 = 3.5;
-	                break;
-	            case "B":
-	            	gpv3 = 3;
-	                break;
-	            case "B-":
-	            	gpv3 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv3 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv3 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv3 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv3 = 0;
-	            	break;
-	            case "G":
-	            	gpv3 = 0;
-	            	break;
-			}
+			String grade3 = tfGrade3.getText().toUpperCase();
+			checkGrade(grade3);
+			double gpv3 = grades.getGrade(grade3);
 			
-			String grade4 = tfGrade4.getText();	
-			double gpv4=0;
-			switch (grade4.toUpperCase())
-			{
-	            case "A":
-	            	gpv4 = 4;
-	                break;
-	            case "B+":
-	            	gpv4 = 3.5;
-	                break;
-	            case "B":
-	            	gpv4 = 3;
-	                break;
-	            case "B-":
-	            	gpv4 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv4 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv4 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv4 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv4 = 0;
-	            	break;
-	            case "G":
-	            	gpv4 = 0;
-	            	break;
-			}
+			String grade4 = tfGrade4.getText().toUpperCase();
+			checkGrade(grade4);	
+			double gpv4 = grades.getGrade(grade4);
 			
-			String grade5 = tfGrade5.getText();	
-			double gpv5=0;
-			switch (grade5.toUpperCase())
-			{
-	            case "A":
-	            	gpv5 = 4;
-	                break;
-	            case "B+":
-	            	gpv5 = 3.5;
-	                break;
-	            case "B":
-	            	gpv5 = 3;
-	                break;
-	            case "B-":
-	            	gpv5 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv5 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv5 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv5 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv5 = 0;
-	            	break;
-	            case "G":
-	            	gpv5 = 0;
-	            	break;
-			}
+			String grade5 = tfGrade5.getText().toUpperCase();
+			checkGrade(grade5);
+			double gpv5 = grades.getGrade(grade5);
 			
-			String grade6 = tfGrade6.getText();	
-			double gpv6=0;
-			switch (grade6.toUpperCase())
-			{
-	            case "A":
-	            	gpv6 = 4;
-	                break;
-	            case "B+":
-	            	gpv6 = 3.5;
-	                break;
-	            case "B":
-	            	gpv6 = 3;
-	                break;
-	            case "B-":
-	            	gpv6 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv6 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv6 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv6 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv6 = 0;
-	            	break;
-	            case "G":
-	            	gpv6 = 0;
-	            	break;
-			}
+			String grade6 = tfGrade6.getText().toUpperCase();
+			checkGrade(grade6);
+			double gpv6 = grades.getGrade(grade6);
 			
-			String grade7 = tfGrade7.getText();	
-			double gpv7=0;
-			switch (grade7.toUpperCase())
-			{
-	            case "A":
-	            	gpv7 = 4;
-	                break;
-	            case "B+":
-	            	gpv7 = 3.5;
-	                break;
-	            case "B":
-	            	gpv7 = 3;
-	                break;
-	            case "B-":
-	            	gpv7 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv7 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv7 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv7 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv7 = 0;
-	            	break;
-	            case "G":
-	            	gpv7 = 0;
-	            	break;
-			}
+			String grade7 = tfGrade7.getText().toUpperCase();
+			checkGrade(grade7);
+			double gpv7 = grades.getGrade(grade7);
 			
-			String grade8 = tfGrade8.getText();	
-			double gpv8=0;
-			switch (grade8.toUpperCase())
-			{
-	            case "A":
-	            	gpv8 = 4;
-	                break;
-	            case "B+":
-	            	gpv8 = 3.5;
-	                break;
-	            case "B":
-	            	gpv8 = 3;
-	                break;
-	            case "B-":
-	            	gpv8 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv8 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv8 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv8 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv8 = 0;
-	            	break;
-	            case "G":
-	            	gpv8 = 0;
-	            	break;
-			}
+			String grade8 = tfGrade8.getText().toUpperCase();
+			checkGrade(grade8);
+			double gpv8 = grades.getGrade(grade8);
 			
-			String grade9 = tfGrade9.getText();	
-			double gpv9=0;
-			switch (grade9.toUpperCase())
-			{
-	            case "A":
-	            	gpv9 = 4;
-	                break;
-	            case "B+":
-	            	gpv9 = 3.5;
-	                break;
-	            case "B":
-	            	gpv9 = 3;
-	                break;
-	            case "B-":
-	            	gpv9 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv9 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv9 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv9 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv9 = 0;
-	            	break;
-	            case "G":
-	            	gpv9 = 0;
-	            	break;
-			}
+			String grade9 = tfGrade9.getText().toUpperCase();
+			checkGrade(grade9);
+			double gpv9 = grades.getGrade(grade9);
 			
-			String grade10 = tfGrade10.getText();	
-			double gpv10=0;
-			switch (grade10.toUpperCase())
-			{
-	            case "A":
-	            	gpv10 = 4;
-	                break;
-	            case "B+":
-	            	gpv10 = 3.5;
-	                break;
-	            case "B":
-	            	gpv10 = 3;
-	                break;
-	            case "B-":
-	            	gpv10 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv10 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv10 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv10 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv10 = 0;
-	            	break;
-	            case "G":
-	            	gpv10 = 0;
-	            	break;
-			}
+			String grade10 = tfGrade10.getText().toUpperCase();
+			checkGrade(grade10);	
+			double gpv10 = grades.getGrade(grade10);
 			
-			String grade11 = tfGrade11.getText();	
-			double gpv11=0;
-			switch (grade11.toUpperCase())
-			{
-	            case "A":
-	            	gpv11 = 4;
-	                break;
-	            case "B+":
-	            	gpv11 = 3.5;
-	                break;
-	            case "B":
-	            	gpv11 = 3;
-	                break;
-	            case "B-":
-	            	gpv11 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv11 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv11 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv11 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv11 = 0;
-	            	break;
-	            case "G":
-	            	gpv11 = 0;
-	            	break;
-			}
+			String grade11 = tfGrade11.getText().toUpperCase();
+			checkGrade(grade11);
+			double gpv11 = grades.getGrade(grade11);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
 			int credit2 = Integer.parseInt(tfCredit2.getText());
@@ -3698,403 +1806,56 @@ public class Calculator extends JFrame implements ActionListener
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
 		}
+		
 		else if(i==12)
 		{
-			String grade1 = tfGrade1.getText();	
-			double gpv1=0;
-			switch (grade1.toUpperCase())
-			{
-	            case "A":
-	            	gpv1 = 4;
-	                break;
-	            case "B+":
-	            	gpv1 = 3.5;
-	                break;
-	            case "B":
-	            	gpv1 = 3;
-	                break;
-	            case "B-":
-	            	gpv1 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv1 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv1 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv1 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv1 = 0;
-	            	break;
-	            case "G":
-	            	gpv1 = 0;
-	            	break;
-			}
+			String grade1 = tfGrade1.getText().toUpperCase();
+			checkGrade(grade1);
+			double gpv1 = grades.getGrade(grade1);
 			
-			String grade2 = tfGrade2.getText();	
-			double gpv2=0;
-			switch (grade2.toUpperCase())
-			{
-	            case "A":
-	            	gpv2 = 4;
-	                break;
-	            case "B+":
-	            	gpv2 = 3.5;
-	                break;
-	            case "B":
-	            	gpv2 = 3;
-	                break;
-	            case "B-":
-	            	gpv2 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv2 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv2 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv2 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv2 = 0;
-	            	break;
-	            case "G":
-	            	gpv2 = 0;
-	            	break;
-			}
+			String grade2 = tfGrade2.getText().toUpperCase();
+			checkGrade(grade2);
+			double gpv2 = grades.getGrade(grade2);
 			
-			String grade3 = tfGrade3.getText();	
-			double gpv3=0;
-			switch (grade3.toUpperCase())
-			{
-	            case "A":
-	            	gpv3 = 4;
-	                break;
-	            case "B+":
-	            	gpv3 = 3.5;
-	                break;
-	            case "B":
-	            	gpv3 = 3;
-	                break;
-	            case "B-":
-	            	gpv3 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv3 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv3 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv3 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv3 = 0;
-	            	break;
-	            case "G":
-	            	gpv3 = 0;
-	            	break;
-			}
+			String grade3 = tfGrade3.getText().toUpperCase();
+			checkGrade(grade3);
+			double gpv3 = grades.getGrade(grade3);
 			
-			String grade4 = tfGrade4.getText();	
-			double gpv4=0;
-			switch (grade4.toUpperCase())
-			{
-	            case "A":
-	            	gpv4 = 4;
-	                break;
-	            case "B+":
-	            	gpv4 = 3.5;
-	                break;
-	            case "B":
-	            	gpv4 = 3;
-	                break;
-	            case "B-":
-	            	gpv4 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv4 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv4 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv4 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv4 = 0;
-	            	break;
-	            case "G":
-	            	gpv4 = 0;
-	            	break;
-			}
+			String grade4 = tfGrade4.getText().toUpperCase();
+			checkGrade(grade4);
+			double gpv4 = grades.getGrade(grade4);
 			
-			String grade5 = tfGrade5.getText();	
-			double gpv5=0;
-			switch (grade5.toUpperCase())
-			{
-	            case "A":
-	            	gpv5 = 4;
-	                break;
-	            case "B+":
-	            	gpv5 = 3.5;
-	                break;
-	            case "B":
-	            	gpv5 = 3;
-	                break;
-	            case "B-":
-	            	gpv5 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv5 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv5 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv5 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv5 = 0;
-	            	break;
-	            case "G":
-	            	gpv5 = 0;
-	            	break;
-			}
+			String grade5 = tfGrade5.getText().toUpperCase();
+			checkGrade(grade5);	
+			double gpv5 = grades.getGrade(grade5);
 			
-			String grade6 = tfGrade6.getText();	
-			double gpv6=0;
-			switch (grade6.toUpperCase())
-			{
-	            case "A":
-	            	gpv6 = 4;
-	                break;
-	            case "B+":
-	            	gpv6 = 3.5;
-	                break;
-	            case "B":
-	            	gpv6 = 3;
-	                break;
-	            case "B-":
-	            	gpv6 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv6 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv6 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv6 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv6 = 0;
-	            	break;
-	            case "G":
-	            	gpv6 = 0;
-	            	break;
-			}
+			String grade6 = tfGrade6.getText().toUpperCase();
+			checkGrade(grade6);
+			double gpv6 = grades.getGrade(grade6);
 			
-			String grade7 = tfGrade7.getText();	
-			double gpv7=0;
-			switch (grade7.toUpperCase())
-			{
-	            case "A":
-	            	gpv7 = 4;
-	                break;
-	            case "B+":
-	            	gpv7 = 3.5;
-	                break;
-	            case "B":
-	            	gpv7 = 3;
-	                break;
-	            case "B-":
-	            	gpv7 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv7 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv7 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv7 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv7 = 0;
-	            	break;
-	            case "G":
-	            	gpv7 = 0;
-	            	break;
-			}
+			String grade7 = tfGrade7.getText().toUpperCase();
+			checkGrade(grade7);
+			double gpv7 = grades.getGrade(grade7);
 			
-			String grade8 = tfGrade8.getText();	
-			double gpv8=0;
-			switch (grade8.toUpperCase())
-			{
-	            case "A":
-	            	gpv8 = 4;
-	                break;
-	            case "B+":
-	            	gpv8 = 3.5;
-	                break;
-	            case "B":
-	            	gpv8 = 3;
-	                break;
-	            case "B-":
-	            	gpv8 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv8 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv8 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv8 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv8 = 0;
-	            	break;
-	            case "G":
-	            	gpv8 = 0;
-	            	break;
-			}
+			String grade8 = tfGrade8.getText().toUpperCase();
+			checkGrade(grade8);
+			double gpv8 = grades.getGrade(grade8);
 			
-			String grade9 = tfGrade9.getText();	
-			double gpv9=0;
-			switch (grade9.toUpperCase())
-			{
-	            case "A":
-	            	gpv9 = 4;
-	                break;
-	            case "B+":
-	            	gpv9 = 3.5;
-	                break;
-	            case "B":
-	            	gpv9 = 3;
-	                break;
-	            case "B-":
-	            	gpv9 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv9 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv9 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv9 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv9 = 0;
-	            	break;
-	            case "G":
-	            	gpv9 = 0;
-	            	break;
-			}
+			String grade9 = tfGrade9.getText().toUpperCase();
+			checkGrade(grade9);
+			double gpv9 = grades.getGrade(grade9);
 			
-			String grade10 = tfGrade10.getText();	
-			double gpv10=0;
-			switch (grade10.toUpperCase())
-			{
-	            case "A":
-	            	gpv10 = 4;
-	                break;
-	            case "B+":
-	            	gpv10 = 3.5;
-	                break;
-	            case "B":
-	            	gpv10 = 3;
-	                break;
-	            case "B-":
-	            	gpv10 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv10 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv10 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv10 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv10 = 0;
-	            	break;
-	            case "G":
-	            	gpv10 = 0;
-	            	break;
-			}
+			String grade10 = tfGrade10.getText().toUpperCase();
+			checkGrade(grade10);	
+			double gpv10 = grades.getGrade(grade10);
 			
-			String grade11 = tfGrade11.getText();	
-			double gpv11=0;
-			switch (grade11.toUpperCase())
-			{
-	            case "A":
-	            	gpv11 = 4;
-	                break;
-	            case "B+":
-	            	gpv11 = 3.5;
-	                break;
-	            case "B":
-	            	gpv11 = 3;
-	                break;
-	            case "B-":
-	            	gpv11 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv11 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv11 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv11 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv11 = 0;
-	            	break;
-	            case "G":
-	            	gpv11 = 0;
-	            	break;
-			}
+			String grade11 = tfGrade11.getText().toUpperCase();
+			checkGrade(grade11);	
+			double gpv11 = grades.getGrade(grade11);
 			
-			String grade12 = tfGrade12.getText();	
-			double gpv12=0;
-			switch (grade12.toUpperCase())
-			{
-	            case "A":
-	            	gpv12 = 4;
-	                break;
-	            case "B+":
-	            	gpv12 = 3.5;
-	                break;
-	            case "B":
-	            	gpv12 = 3;
-	                break;
-	            case "B-":
-	            	gpv12 = 2.75;
-	            	break;
-	            case "C+":
-	            	gpv12 = 2.50;
-	            	break;
-	            case "C":
-	            	gpv12 = 2.00;
-	            	break;
-	            case "D":
-	            	gpv12 = 1.50;
-	            	break;
-	            case "F":
-	            	gpv12 = 0;
-	            	break;
-	            case "G":
-	            	gpv12 = 0;
-	            	break;
-			}
+			String grade12 = tfGrade12.getText().toUpperCase();
+			checkGrade(grade12);
+			double gpv12 = grades.getGrade(grade12);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
 			int credit2 = Integer.parseInt(tfCredit2.getText());
@@ -4139,6 +1900,38 @@ public class Calculator extends JFrame implements ActionListener
 			
 			double gpa = totalValue/totalCredit;
 			tfTotal.setText("" + gpa);
+		}
+	}
+
+	private void checkGrade(String grade) 
+	{
+		boolean valid;
+		if (grade == null)
+			valid = false;
+		else if(grade.equals("A"))
+			valid = true;
+		else if(grade.equals("B+"))
+			valid = true;
+		else if(grade.equals("B"))
+			valid = true;
+		else if(grade.equals("B-"))
+			valid = true;
+		else if(grade.equals("C+"))
+			valid = true;
+		else if(grade.equals("C"))
+			valid = true;
+		else if(grade.equals("D"))
+			valid = true;
+		else if(grade.equals("F"))
+			valid = true;
+		else if(grade.equals("G"))
+			valid = true;
+		else
+			valid = false;
+		
+		if(!valid)
+		{
+			JOptionPane.showMessageDialog(null, "Please enter a supported grade such as A, B+, B etc.", "Unsupported Grade.", JOptionPane.WARNING_MESSAGE);
 		}
 	}
 }
