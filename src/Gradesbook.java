@@ -9,8 +9,8 @@ public class Gradesbook
 	public double getGrade(String grade)
 	{
 		double gpv = 0;
-		
-		switch (grade.toUpperCase())
+
+		switch (grade)
 		{
 	        case "A":
 	        	gpv = 4;

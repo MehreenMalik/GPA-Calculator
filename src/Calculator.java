@@ -1,8 +1,10 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
 
 /**
  * @author Mehreen Malik
@@ -62,10 +64,6 @@ public class Calculator extends JFrame implements ActionListener
 		    		
 		            JLabel labelSubject1 = new JLabel("Subject 1");
 		    		tfGrade1 = new JTextField(5);
-		    		
-		    		//TODO: ADD verifier
-		    		//tfGrade1.setInputVerifier(new GradeInputVerifier());
-		    		
 		    		tfCredit1 = new JTextField(5);
 		    		tfValue1 = new JLabel(" ");
 		    		
@@ -1224,14 +1222,11 @@ public class Calculator extends JFrame implements ActionListener
 		if(i==1)
 		{
 			String grade = tfGrade1.getText().toUpperCase();
-			checkGrade(grade);
+			checkGrade(grade, tfGrade1);
 			double gpv = grades.getGrade(grade);
 			
 			int credit = Integer.parseInt(tfCredit1.getText());
-			if (credit>5.00 || credit<0.01)
-			{
-				JOptionPane.showMessageDialog(null, "Please enter lettered grades only.");
-			}
+			checkCredit(credit);
 			int totalCredit = credit;
 			
 			double value = gpv*credit;
@@ -1245,11 +1240,11 @@ public class Calculator extends JFrame implements ActionListener
 		else if(i==2)
 		{
 			String grade1 = tfGrade1.getText().toUpperCase();
-			checkGrade(grade1);
+			checkGrade(grade1, tfGrade1);
 			double gpv1 = grades.getGrade(grade1);
 			
 			String grade2 = tfGrade2.getText().toUpperCase();
-			checkGrade(grade2);
+			checkGrade(grade2, tfGrade2);
 			double gpv2 = grades.getGrade(grade2);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
@@ -1270,15 +1265,15 @@ public class Calculator extends JFrame implements ActionListener
 		else if(i==3)
 		{
 			String grade1 = tfGrade1.getText().toUpperCase();
-			checkGrade(grade1);
+			checkGrade(grade1, tfGrade1);
 			double gpv1 = grades.getGrade(grade1);
 			
 			String grade2 = tfGrade2.getText().toUpperCase();
-			checkGrade(grade2);
+			checkGrade(grade2, tfGrade2);
 			double gpv2 = grades.getGrade(grade2);
 			
 			String grade3 = tfGrade3.getText().toUpperCase();
-			checkGrade(grade3);
+			checkGrade(grade3, tfGrade3);
 			double gpv3 = grades.getGrade(grade3);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
@@ -1302,19 +1297,19 @@ public class Calculator extends JFrame implements ActionListener
 		else if(i==4)
 		{
 			String grade1 = tfGrade1.getText().toUpperCase();
-			checkGrade(grade1);
+			checkGrade(grade1, tfGrade1);
 			double gpv1 = grades.getGrade(grade1);
 			
 			String grade2 = tfGrade2.getText().toUpperCase();
-			checkGrade(grade2);
+			checkGrade(grade2, tfGrade2);
 			double gpv2 = grades.getGrade(grade2);
 			
 			String grade3 = tfGrade3.getText().toUpperCase();
-			checkGrade(grade3);
+			checkGrade(grade3, tfGrade3);
 			double gpv3 = grades.getGrade(grade3);
 			
 			String grade4 = tfGrade4.getText().toUpperCase();
-			checkGrade(grade4);
+			checkGrade(grade4, tfGrade4);
 			double gpv4 = grades.getGrade(grade4);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
@@ -1341,23 +1336,23 @@ public class Calculator extends JFrame implements ActionListener
 		else if(i==5)
 		{
 			String grade1 = tfGrade1.getText().toUpperCase();
-			checkGrade(grade1);
+			checkGrade(grade1, tfGrade1);
 			double gpv1 = grades.getGrade(grade1);
 			
 			String grade2 = tfGrade2.getText().toUpperCase();
-			checkGrade(grade2);
+			checkGrade(grade2, tfGrade2);
 			double gpv2 = grades.getGrade(grade2);
 			
 			String grade3 = tfGrade3.getText().toUpperCase();
-			checkGrade(grade3);
+			checkGrade(grade3, tfGrade3);
 			double gpv3 = grades.getGrade(grade3);
 			
 			String grade4 = tfGrade4.getText().toUpperCase();
-			checkGrade(grade4);
+			checkGrade(grade4, tfGrade4);
 			double gpv4 = grades.getGrade(grade4);
 			
 			String grade5 = tfGrade5.getText().toUpperCase();
-			checkGrade(grade5);	
+			checkGrade(grade5, tfGrade5);	
 			double gpv5 = grades.getGrade(grade5);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
@@ -1387,27 +1382,27 @@ public class Calculator extends JFrame implements ActionListener
 		else if(i==6)
 		{
 			String grade1 = tfGrade1.getText().toUpperCase();
-			checkGrade(grade1);
+			checkGrade(grade1, tfGrade1);
 			double gpv1 = grades.getGrade(grade1);
 			
 			String grade2 = tfGrade2.getText().toUpperCase();
-			checkGrade(grade2);
+			checkGrade(grade2, tfGrade2);
 			double gpv2 = grades.getGrade(grade2);
 			
 			String grade3 = tfGrade3.getText().toUpperCase();
-			checkGrade(grade3);
+			checkGrade(grade3, tfGrade3);
 			double gpv3 = grades.getGrade(grade3);
 			
 			String grade4 = tfGrade4.getText().toUpperCase();
-			checkGrade(grade4);
+			checkGrade(grade4, tfGrade4);
 			double gpv4 = grades.getGrade(grade4);
 			
 			String grade5 = tfGrade5.getText().toUpperCase();
-			checkGrade(grade5);	
+			checkGrade(grade5, tfGrade5);	
 			double gpv5 = grades.getGrade(grade5);
 			
 			String grade6 = tfGrade6.getText().toUpperCase();
-			checkGrade(grade6);	
+			checkGrade(grade6, tfGrade6);	
 			double gpv6 = grades.getGrade(grade6);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
@@ -1440,31 +1435,31 @@ public class Calculator extends JFrame implements ActionListener
 		else if(i==7)
 		{
 			String grade1 = tfGrade1.getText().toUpperCase();
-			checkGrade(grade1);
+			checkGrade(grade1, tfGrade1);
 			double gpv1 = grades.getGrade(grade1);
 			
 			String grade2 = tfGrade2.getText().toUpperCase();
-			checkGrade(grade2);
+			checkGrade(grade2, tfGrade2);
 			double gpv2 = grades.getGrade(grade2);
 			
 			String grade3 = tfGrade3.getText().toUpperCase();
-			checkGrade(grade3);
+			checkGrade(grade3, tfGrade3);
 			double gpv3 = grades.getGrade(grade3);
 			
 			String grade4 = tfGrade4.getText().toUpperCase();
-			checkGrade(grade4);
+			checkGrade(grade4, tfGrade4);
 			double gpv4 = grades.getGrade(grade4);
 			
 			String grade5 = tfGrade5.getText().toUpperCase();
-			checkGrade(grade5);	
+			checkGrade(grade5, tfGrade5);	
 			double gpv5 = grades.getGrade(grade5);
 			
 			String grade6 = tfGrade6.getText().toUpperCase();
-			checkGrade(grade6);
+			checkGrade(grade6, tfGrade6);
 			double gpv6 = grades.getGrade(grade6);
 			
 			String grade7 = tfGrade7.getText().toUpperCase();
-			checkGrade(grade7);	
+			checkGrade(grade7, tfGrade7);	
 			double gpv7 = grades.getGrade(grade7);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
@@ -1500,35 +1495,35 @@ public class Calculator extends JFrame implements ActionListener
 		else if(i==8)
 		{
 			String grade1 = tfGrade1.getText().toUpperCase();
-			checkGrade(grade1);	
+			checkGrade(grade1, tfGrade1);	
 			double gpv1 = grades.getGrade(grade1);
 			
 			String grade2 = tfGrade2.getText().toUpperCase();
-			checkGrade(grade2);
+			checkGrade(grade2, tfGrade2);
 			double gpv2 = grades.getGrade(grade2);
 			
 			String grade3 = tfGrade3.getText().toUpperCase();
-			checkGrade(grade3);
+			checkGrade(grade3, tfGrade3);
 			double gpv3 = grades.getGrade(grade3);
 			
 			String grade4 = tfGrade4.getText().toUpperCase();
-			checkGrade(grade4);
+			checkGrade(grade4, tfGrade4);
 			double gpv4 = grades.getGrade(grade4);
 			
 			String grade5 = tfGrade5.getText().toUpperCase();
-			checkGrade(grade5);
+			checkGrade(grade5, tfGrade5);
 			double gpv5 = grades.getGrade(grade5);
 			
 			String grade6 = tfGrade6.getText().toUpperCase();
-			checkGrade(grade6);	
+			checkGrade(grade6, tfGrade6);	
 			double gpv6 = grades.getGrade(grade6);
 			
 			String grade7 = tfGrade7.getText().toUpperCase();
-			checkGrade(grade7);
+			checkGrade(grade7, tfGrade7);
 			double gpv7 = grades.getGrade(grade7);
 			
 			String grade8 = tfGrade8.getText().toUpperCase();
-			checkGrade(grade8);
+			checkGrade(grade8, tfGrade8);
 			double gpv8 = grades.getGrade(grade8);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
@@ -1567,39 +1562,39 @@ public class Calculator extends JFrame implements ActionListener
 		else if(i==9)
 		{
 			String grade1 = tfGrade1.getText().toUpperCase();
-			checkGrade(grade1);
+			checkGrade(grade1, tfGrade1);
 			double gpv1 = grades.getGrade(grade1);
 			
 			String grade2 = tfGrade2.getText().toUpperCase();
-			checkGrade(grade2);	
+			checkGrade(grade2, tfGrade2);	
 			double gpv2 = grades.getGrade(grade2);
 			
 			String grade3 = tfGrade3.getText().toUpperCase();
-			checkGrade(grade3);	
+			checkGrade(grade3, tfGrade3);	
 			double gpv3 = grades.getGrade(grade3);
 			
 			String grade4 = tfGrade4.getText().toUpperCase();
-			checkGrade(grade4);
+			checkGrade(grade4, tfGrade4);
 			double gpv4 = grades.getGrade(grade4);
 			
 			String grade5 = tfGrade5.getText().toUpperCase();
-			checkGrade(grade5);
+			checkGrade(grade5, tfGrade5);
 			double gpv5 = grades.getGrade(grade5);
 			
 			String grade6 = tfGrade6.getText().toUpperCase();
-			checkGrade(grade6);
+			checkGrade(grade6, tfGrade6);
 			double gpv6 = grades.getGrade(grade6);
 			
 			String grade7 = tfGrade7.getText().toUpperCase();
-			checkGrade(grade7);
+			checkGrade(grade7, tfGrade7);
 			double gpv7 = grades.getGrade(grade7);
 			
 			String grade8 = tfGrade8.getText().toUpperCase();
-			checkGrade(grade8);
+			checkGrade(grade8, tfGrade8);
 			double gpv8 = grades.getGrade(grade8);
 			
 			String grade9 = tfGrade9.getText().toUpperCase();
-			checkGrade(grade9);
+			checkGrade(grade9, tfGrade9);
 			double gpv9 = grades.getGrade(grade9);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
@@ -1641,43 +1636,43 @@ public class Calculator extends JFrame implements ActionListener
 		else if(i==10)
 		{
 			String grade1 = tfGrade1.getText().toUpperCase();
-			checkGrade(grade1);
+			checkGrade(grade1, tfGrade1);
 			double gpv1 = grades.getGrade(grade1);
 			
 			String grade2 = tfGrade2.getText().toUpperCase();
-			checkGrade(grade2);
+			checkGrade(grade2, tfGrade2);
 			double gpv2 = grades.getGrade(grade2);
 			
 			String grade3 = tfGrade3.getText().toUpperCase();
-			checkGrade(grade3);	
+			checkGrade(grade3, tfGrade3);	
 			double gpv3 = grades.getGrade(grade3);
 			
 			String grade4 = tfGrade4.getText().toUpperCase();
-			checkGrade(grade4);	
+			checkGrade(grade4, tfGrade4);	
 			double gpv4 = grades.getGrade(grade4);
 			
 			String grade5 = tfGrade5.getText().toUpperCase();
-			checkGrade(grade5);
+			checkGrade(grade5, tfGrade5);
 			double gpv5 = grades.getGrade(grade5);
 			
 			String grade6 = tfGrade6.getText().toUpperCase();
-			checkGrade(grade6);	
+			checkGrade(grade6, tfGrade6);	
 			double gpv6 = grades.getGrade(grade6);
 			
 			String grade7 = tfGrade7.getText().toUpperCase();
-			checkGrade(grade7);
+			checkGrade(grade7, tfGrade7);
 			double gpv7 = grades.getGrade(grade7);
 			
 			String grade8 = tfGrade8.getText().toUpperCase();
-			checkGrade(grade8);
+			checkGrade(grade8, tfGrade8);
 			double gpv8 = grades.getGrade(grade8);
 			
 			String grade9 = tfGrade9.getText().toUpperCase();
-			checkGrade(grade9);
+			checkGrade(grade9, tfGrade9);
 			double gpv9 = grades.getGrade(grade9);
 			
 			String grade10 = tfGrade10.getText().toUpperCase();
-			checkGrade(grade10);	
+			checkGrade(grade10, tfGrade10);	
 			double gpv10 = grades.getGrade(grade10);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
@@ -1722,47 +1717,47 @@ public class Calculator extends JFrame implements ActionListener
 		else if(i==11)
 		{
 			String grade1 = tfGrade1.getText().toUpperCase();
-			checkGrade(grade1);
+			checkGrade(grade1, tfGrade1);
 			double gpv1 = grades.getGrade(grade1);
 			
 			String grade2 = tfGrade2.getText().toUpperCase();
-			checkGrade(grade2);
+			checkGrade(grade2, tfGrade2);
 			double gpv2 = grades.getGrade(grade2);
 			
 			String grade3 = tfGrade3.getText().toUpperCase();
-			checkGrade(grade3);
+			checkGrade(grade3, tfGrade3);
 			double gpv3 = grades.getGrade(grade3);
 			
 			String grade4 = tfGrade4.getText().toUpperCase();
-			checkGrade(grade4);	
+			checkGrade(grade4, tfGrade4);	
 			double gpv4 = grades.getGrade(grade4);
 			
 			String grade5 = tfGrade5.getText().toUpperCase();
-			checkGrade(grade5);
+			checkGrade(grade5, tfGrade5);
 			double gpv5 = grades.getGrade(grade5);
 			
 			String grade6 = tfGrade6.getText().toUpperCase();
-			checkGrade(grade6);
+			checkGrade(grade6, tfGrade6);
 			double gpv6 = grades.getGrade(grade6);
 			
 			String grade7 = tfGrade7.getText().toUpperCase();
-			checkGrade(grade7);
+			checkGrade(grade7, tfGrade7);
 			double gpv7 = grades.getGrade(grade7);
 			
 			String grade8 = tfGrade8.getText().toUpperCase();
-			checkGrade(grade8);
+			checkGrade(grade8, tfGrade8);
 			double gpv8 = grades.getGrade(grade8);
 			
 			String grade9 = tfGrade9.getText().toUpperCase();
-			checkGrade(grade9);
+			checkGrade(grade9, tfGrade9);
 			double gpv9 = grades.getGrade(grade9);
 			
 			String grade10 = tfGrade10.getText().toUpperCase();
-			checkGrade(grade10);	
+			checkGrade(grade10, tfGrade10);	
 			double gpv10 = grades.getGrade(grade10);
 			
 			String grade11 = tfGrade11.getText().toUpperCase();
-			checkGrade(grade11);
+			checkGrade(grade11, tfGrade11);
 			double gpv11 = grades.getGrade(grade11);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
@@ -1810,51 +1805,51 @@ public class Calculator extends JFrame implements ActionListener
 		else if(i==12)
 		{
 			String grade1 = tfGrade1.getText().toUpperCase();
-			checkGrade(grade1);
+			checkGrade(grade1, tfGrade1);
 			double gpv1 = grades.getGrade(grade1);
 			
 			String grade2 = tfGrade2.getText().toUpperCase();
-			checkGrade(grade2);
+			checkGrade(grade2, tfGrade2);
 			double gpv2 = grades.getGrade(grade2);
 			
 			String grade3 = tfGrade3.getText().toUpperCase();
-			checkGrade(grade3);
+			checkGrade(grade3, tfGrade3);
 			double gpv3 = grades.getGrade(grade3);
 			
 			String grade4 = tfGrade4.getText().toUpperCase();
-			checkGrade(grade4);
+			checkGrade(grade4, tfGrade4);
 			double gpv4 = grades.getGrade(grade4);
 			
 			String grade5 = tfGrade5.getText().toUpperCase();
-			checkGrade(grade5);	
+			checkGrade(grade5, tfGrade5);	
 			double gpv5 = grades.getGrade(grade5);
 			
 			String grade6 = tfGrade6.getText().toUpperCase();
-			checkGrade(grade6);
+			checkGrade(grade6, tfGrade6);
 			double gpv6 = grades.getGrade(grade6);
 			
 			String grade7 = tfGrade7.getText().toUpperCase();
-			checkGrade(grade7);
+			checkGrade(grade7, tfGrade7);
 			double gpv7 = grades.getGrade(grade7);
 			
 			String grade8 = tfGrade8.getText().toUpperCase();
-			checkGrade(grade8);
+			checkGrade(grade8, tfGrade8);
 			double gpv8 = grades.getGrade(grade8);
 			
 			String grade9 = tfGrade9.getText().toUpperCase();
-			checkGrade(grade9);
+			checkGrade(grade9, tfGrade9);
 			double gpv9 = grades.getGrade(grade9);
 			
 			String grade10 = tfGrade10.getText().toUpperCase();
-			checkGrade(grade10);	
+			checkGrade(grade10, tfGrade10);	
 			double gpv10 = grades.getGrade(grade10);
 			
 			String grade11 = tfGrade11.getText().toUpperCase();
-			checkGrade(grade11);	
+			checkGrade(grade11, tfGrade11);	
 			double gpv11 = grades.getGrade(grade11);
 			
 			String grade12 = tfGrade12.getText().toUpperCase();
-			checkGrade(grade12);
+			checkGrade(grade12, tfGrade12);
 			double gpv12 = grades.getGrade(grade12);
 			
 			int credit1 = Integer.parseInt(tfCredit1.getText());
@@ -1902,36 +1897,71 @@ public class Calculator extends JFrame implements ActionListener
 			tfTotal.setText("" + gpa);
 		}
 	}
-
-	private void checkGrade(String grade) 
+	
+	private void checkGrade(String grade, JTextField tf) 
 	{
-		boolean valid;
+		boolean valid=true;
 		if (grade == null)
 			valid = false;
 		else if(grade.equals("A"))
+		{
+			tf.setForeground(Color.black);
 			valid = true;
+		}
 		else if(grade.equals("B+"))
+		{
+			tf.setForeground(Color.black);
 			valid = true;
+		}
 		else if(grade.equals("B"))
+		{
+			tf.setForeground(Color.black);
 			valid = true;
+		}
 		else if(grade.equals("B-"))
+		{
+			tf.setForeground(Color.black);
 			valid = true;
+		}
 		else if(grade.equals("C+"))
+		{
+			tf.setForeground(Color.black);
 			valid = true;
+		}
 		else if(grade.equals("C"))
+		{
+			tf.setForeground(Color.black);
 			valid = true;
+		}
 		else if(grade.equals("D"))
+		{
+			tf.setForeground(Color.black);
 			valid = true;
+		}
 		else if(grade.equals("F"))
+		{
+			tf.setForeground(Color.black);
 			valid = true;
+		}
 		else if(grade.equals("G"))
+		{
+			tf.setForeground(Color.black);
 			valid = true;
+		}
 		else
+		{
+			tf.setForeground(Color.red);
 			valid = false;
+		}
 		
 		if(!valid)
 		{
 			JOptionPane.showMessageDialog(null, "Please enter a supported grade such as A, B+, B etc.", "Unsupported Grade.", JOptionPane.WARNING_MESSAGE);
 		}
+	}
+	
+	private void checkCredit(int credit) 
+	{
+		
 	}
 }
