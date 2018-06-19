@@ -1,5 +1,5 @@
-# ITB-GPA-Calculator
-Institute of Technology Blanchardstown, GPA calculator.
+# GPA-Calculator
+GPA calculator.
 <br>
 Created by Mehreen Malik on 15th April 2018. 
 <br>

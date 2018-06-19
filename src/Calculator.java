@@ -7,7 +7,7 @@ import javax.swing.*;
 /**
  * @author Mehreen Malik
  * mehreenmalik08@gmail.com
- * ITB GPA calculator.
+ * GPA calculator.
  */
 
 public class Calculator extends JFrame implements ActionListener
