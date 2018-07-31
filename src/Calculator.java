@@ -1225,8 +1225,7 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade, tfGrade1);
 			double gpv = grades.getGrade(grade);
 			
-			int credit = Integer.parseInt(tfCredit1.getText());
-			checkCredit(credit);
+			int credit = checkCredit(tfCredit1.getText(),tfCredit1);			
 			int totalCredit = credit;
 			
 			double value = gpv*credit;
@@ -1247,8 +1246,8 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade2, tfGrade2);
 			double gpv2 = grades.getGrade(grade2);
 			
-			int credit1 = Integer.parseInt(tfCredit1.getText());
-			int credit2 = Integer.parseInt(tfCredit2.getText());
+			int credit1 = checkCredit(tfCredit1.getText(),tfCredit1);
+			int credit2 = checkCredit(tfCredit2.getText(),tfCredit2);
 			int totalCredit = credit1 + credit2;
 			
 			double value1 = gpv1*credit1;
@@ -1276,9 +1275,9 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade3, tfGrade3);
 			double gpv3 = grades.getGrade(grade3);
 			
-			int credit1 = Integer.parseInt(tfCredit1.getText());
-			int credit2 = Integer.parseInt(tfCredit2.getText());
-			int credit3 = Integer.parseInt(tfCredit3.getText());
+			int credit1 = checkCredit(tfCredit1.getText(),tfCredit1);
+			int credit2 = checkCredit(tfCredit2.getText(),tfCredit2);
+			int credit3 = checkCredit(tfCredit3.getText(),tfCredit3);
 			int totalCredit = credit1 + credit2 + credit3;
 			
 			double value1 = gpv1*credit1;
@@ -1312,10 +1311,10 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade4, tfGrade4);
 			double gpv4 = grades.getGrade(grade4);
 			
-			int credit1 = Integer.parseInt(tfCredit1.getText());
-			int credit2 = Integer.parseInt(tfCredit2.getText());
-			int credit3 = Integer.parseInt(tfCredit3.getText());
-			int credit4 = Integer.parseInt(tfCredit4.getText());
+			int credit1 = checkCredit(tfCredit1.getText(),tfCredit1);
+			int credit2 = checkCredit(tfCredit2.getText(),tfCredit2);
+			int credit3 = checkCredit(tfCredit3.getText(),tfCredit3);
+			int credit4 = checkCredit(tfCredit4.getText(),tfCredit4);
 			int totalCredit = credit1 + credit2 + credit3 + credit4;
 			
 			double value1 = gpv1*credit1;
@@ -1355,11 +1354,11 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade5, tfGrade5);	
 			double gpv5 = grades.getGrade(grade5);
 			
-			int credit1 = Integer.parseInt(tfCredit1.getText());
-			int credit2 = Integer.parseInt(tfCredit2.getText());
-			int credit3 = Integer.parseInt(tfCredit3.getText());
-			int credit4 = Integer.parseInt(tfCredit4.getText());
-			int credit5 = Integer.parseInt(tfCredit5.getText());
+			int credit1 = checkCredit(tfCredit1.getText(),tfCredit1);
+			int credit2 = checkCredit(tfCredit2.getText(),tfCredit2);
+			int credit3 = checkCredit(tfCredit3.getText(),tfCredit3);
+			int credit4 = checkCredit(tfCredit4.getText(),tfCredit4);
+			int credit5 = checkCredit(tfCredit5.getText(),tfCredit5);
 			int totalCredit = credit1 + credit2 + credit3 + credit4 + credit5;
 			
 			double value1 = gpv1*credit1;
@@ -1405,12 +1404,12 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade6, tfGrade6);	
 			double gpv6 = grades.getGrade(grade6);
 			
-			int credit1 = Integer.parseInt(tfCredit1.getText());
-			int credit2 = Integer.parseInt(tfCredit2.getText());
-			int credit3 = Integer.parseInt(tfCredit3.getText());
-			int credit4 = Integer.parseInt(tfCredit4.getText());
-			int credit5 = Integer.parseInt(tfCredit5.getText());
-			int credit6 = Integer.parseInt(tfCredit6.getText());
+			int credit1 = checkCredit(tfCredit1.getText(),tfCredit1);
+			int credit2 = checkCredit(tfCredit2.getText(),tfCredit2);
+			int credit3 = checkCredit(tfCredit3.getText(),tfCredit3);
+			int credit4 = checkCredit(tfCredit4.getText(),tfCredit4);
+			int credit5 = checkCredit(tfCredit5.getText(),tfCredit5);
+			int credit6 = checkCredit(tfCredit6.getText(),tfCredit6);
 			int totalCredit = credit1 + credit2 + credit3 + credit4 + credit5 + credit6;
 			
 			double value1 = gpv1*credit1;
@@ -1462,13 +1461,13 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade7, tfGrade7);	
 			double gpv7 = grades.getGrade(grade7);
 			
-			int credit1 = Integer.parseInt(tfCredit1.getText());
-			int credit2 = Integer.parseInt(tfCredit2.getText());
-			int credit3 = Integer.parseInt(tfCredit3.getText());
-			int credit4 = Integer.parseInt(tfCredit4.getText());
-			int credit5 = Integer.parseInt(tfCredit5.getText());
-			int credit6 = Integer.parseInt(tfCredit6.getText());
-			int credit7 = Integer.parseInt(tfCredit7.getText());
+			int credit1 = checkCredit(tfCredit1.getText(),tfCredit1);
+			int credit2 = checkCredit(tfCredit2.getText(),tfCredit2);
+			int credit3 = checkCredit(tfCredit3.getText(),tfCredit3);
+			int credit4 = checkCredit(tfCredit4.getText(),tfCredit4);
+			int credit5 = checkCredit(tfCredit5.getText(),tfCredit5);
+			int credit6 = checkCredit(tfCredit6.getText(),tfCredit6);
+			int credit7 = checkCredit(tfCredit7.getText(),tfCredit7);
 			int totalCredit = credit1 + credit2 + credit3 + credit4 + credit5 + credit6 + credit7;
 			
 			double value1 = gpv1*credit1;
@@ -1526,14 +1525,14 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade8, tfGrade8);
 			double gpv8 = grades.getGrade(grade8);
 			
-			int credit1 = Integer.parseInt(tfCredit1.getText());
-			int credit2 = Integer.parseInt(tfCredit2.getText());
-			int credit3 = Integer.parseInt(tfCredit3.getText());
-			int credit4 = Integer.parseInt(tfCredit4.getText());
-			int credit5 = Integer.parseInt(tfCredit5.getText());
-			int credit6 = Integer.parseInt(tfCredit6.getText());
-			int credit7 = Integer.parseInt(tfCredit7.getText());
-			int credit8 = Integer.parseInt(tfCredit8.getText());
+			int credit1 = checkCredit(tfCredit1.getText(),tfCredit1);
+			int credit2 = checkCredit(tfCredit2.getText(),tfCredit2);
+			int credit3 = checkCredit(tfCredit3.getText(),tfCredit3);
+			int credit4 = checkCredit(tfCredit4.getText(),tfCredit4);
+			int credit5 = checkCredit(tfCredit5.getText(),tfCredit5);
+			int credit6 = checkCredit(tfCredit6.getText(),tfCredit6);
+			int credit7 = checkCredit(tfCredit7.getText(),tfCredit7);
+			int credit8 = checkCredit(tfCredit8.getText(),tfCredit8);
 			int totalCredit = credit1 + credit2 + credit3 + credit4 + credit5 + credit6 + credit7 + credit8;
 			
 			double value1 = gpv1*credit1;
@@ -1597,15 +1596,15 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade9, tfGrade9);
 			double gpv9 = grades.getGrade(grade9);
 			
-			int credit1 = Integer.parseInt(tfCredit1.getText());
-			int credit2 = Integer.parseInt(tfCredit2.getText());
-			int credit3 = Integer.parseInt(tfCredit3.getText());
-			int credit4 = Integer.parseInt(tfCredit4.getText());
-			int credit5 = Integer.parseInt(tfCredit5.getText());
-			int credit6 = Integer.parseInt(tfCredit6.getText());
-			int credit7 = Integer.parseInt(tfCredit7.getText());
-			int credit8 = Integer.parseInt(tfCredit8.getText());
-			int credit9 = Integer.parseInt(tfCredit9.getText());
+			int credit1 = checkCredit(tfCredit1.getText(),tfCredit1);
+			int credit2 = checkCredit(tfCredit2.getText(),tfCredit2);
+			int credit3 = checkCredit(tfCredit3.getText(),tfCredit3);
+			int credit4 = checkCredit(tfCredit4.getText(),tfCredit4);
+			int credit5 = checkCredit(tfCredit5.getText(),tfCredit5);
+			int credit6 = checkCredit(tfCredit6.getText(),tfCredit6);
+			int credit7 = checkCredit(tfCredit7.getText(),tfCredit7);
+			int credit8 = checkCredit(tfCredit8.getText(),tfCredit8);
+			int credit9 = checkCredit(tfCredit9.getText(),tfCredit9);
 			int totalCredit = credit1 + credit2 + credit3 + credit4 + credit5 + credit6 + credit7 + credit8 + credit9;
 			
 			double value1 = gpv1*credit1;
@@ -1675,16 +1674,16 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade10, tfGrade10);	
 			double gpv10 = grades.getGrade(grade10);
 			
-			int credit1 = Integer.parseInt(tfCredit1.getText());
-			int credit2 = Integer.parseInt(tfCredit2.getText());
-			int credit3 = Integer.parseInt(tfCredit3.getText());
-			int credit4 = Integer.parseInt(tfCredit4.getText());
-			int credit5 = Integer.parseInt(tfCredit5.getText());
-			int credit6 = Integer.parseInt(tfCredit6.getText());
-			int credit7 = Integer.parseInt(tfCredit7.getText());
-			int credit8 = Integer.parseInt(tfCredit8.getText());
-			int credit9 = Integer.parseInt(tfCredit9.getText());
-			int credit10 = Integer.parseInt(tfCredit10.getText());
+			int credit1 = checkCredit(tfCredit1.getText(),tfCredit1);
+			int credit2 = checkCredit(tfCredit2.getText(),tfCredit2);
+			int credit3 = checkCredit(tfCredit3.getText(),tfCredit3);
+			int credit4 = checkCredit(tfCredit4.getText(),tfCredit4);
+			int credit5 = checkCredit(tfCredit5.getText(),tfCredit5);
+			int credit6 = checkCredit(tfCredit6.getText(),tfCredit6);
+			int credit7 = checkCredit(tfCredit7.getText(),tfCredit7);
+			int credit8 = checkCredit(tfCredit8.getText(),tfCredit8);
+			int credit9 = checkCredit(tfCredit9.getText(),tfCredit9);
+			int credit10 = checkCredit(tfCredit10.getText(),tfCredit10);
 			int totalCredit = credit1 + credit2 + credit3 + credit4 + credit5 + credit6 + credit7 + credit8 + credit9 + credit10;
 			
 			double value1 = gpv1*credit1;
@@ -1760,17 +1759,17 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade11, tfGrade11);
 			double gpv11 = grades.getGrade(grade11);
 			
-			int credit1 = Integer.parseInt(tfCredit1.getText());
-			int credit2 = Integer.parseInt(tfCredit2.getText());
-			int credit3 = Integer.parseInt(tfCredit3.getText());
-			int credit4 = Integer.parseInt(tfCredit4.getText());
-			int credit5 = Integer.parseInt(tfCredit5.getText());
-			int credit6 = Integer.parseInt(tfCredit6.getText());
-			int credit7 = Integer.parseInt(tfCredit7.getText());
-			int credit8 = Integer.parseInt(tfCredit8.getText());
-			int credit9 = Integer.parseInt(tfCredit9.getText());
-			int credit10 = Integer.parseInt(tfCredit10.getText());
-			int credit11 = Integer.parseInt(tfCredit11.getText());
+			int credit1 = checkCredit(tfCredit1.getText(),tfCredit1);
+			int credit2 = checkCredit(tfCredit2.getText(),tfCredit2);
+			int credit3 = checkCredit(tfCredit3.getText(),tfCredit3);
+			int credit4 = checkCredit(tfCredit4.getText(),tfCredit4);
+			int credit5 = checkCredit(tfCredit5.getText(),tfCredit5);
+			int credit6 = checkCredit(tfCredit6.getText(),tfCredit6);
+			int credit7 = checkCredit(tfCredit7.getText(),tfCredit7);
+			int credit8 = checkCredit(tfCredit8.getText(),tfCredit8);
+			int credit9 = checkCredit(tfCredit9.getText(),tfCredit9);
+			int credit10 = checkCredit(tfCredit10.getText(),tfCredit10);
+			int credit11 = checkCredit(tfCredit11.getText(),tfCredit11);
 			int totalCredit = credit1 + credit2 + credit3 + credit4 + credit5 + credit6 + credit7 + credit8 + credit9 + credit10 + credit11;
 			
 			double value1 = gpv1*credit1;
@@ -1852,18 +1851,18 @@ public class Calculator extends JFrame implements ActionListener
 			checkGrade(grade12, tfGrade12);
 			double gpv12 = grades.getGrade(grade12);
 			
-			int credit1 = Integer.parseInt(tfCredit1.getText());
-			int credit2 = Integer.parseInt(tfCredit2.getText());
-			int credit3 = Integer.parseInt(tfCredit3.getText());
-			int credit4 = Integer.parseInt(tfCredit4.getText());
-			int credit5 = Integer.parseInt(tfCredit5.getText());
-			int credit6 = Integer.parseInt(tfCredit6.getText());
-			int credit7 = Integer.parseInt(tfCredit7.getText());
-			int credit8 = Integer.parseInt(tfCredit8.getText());
-			int credit9 = Integer.parseInt(tfCredit9.getText());
-			int credit10 = Integer.parseInt(tfCredit10.getText());
-			int credit11 = Integer.parseInt(tfCredit11.getText());
-			int credit12 = Integer.parseInt(tfCredit12.getText());
+			int credit1 = checkCredit(tfCredit1.getText(),tfCredit1);
+			int credit2 = checkCredit(tfCredit2.getText(),tfCredit2);
+			int credit3 = checkCredit(tfCredit3.getText(),tfCredit3);
+			int credit4 = checkCredit(tfCredit4.getText(),tfCredit4);
+			int credit5 = checkCredit(tfCredit5.getText(),tfCredit5);
+			int credit6 = checkCredit(tfCredit6.getText(),tfCredit6);
+			int credit7 = checkCredit(tfCredit7.getText(),tfCredit7);
+			int credit8 = checkCredit(tfCredit8.getText(),tfCredit8);
+			int credit9 = checkCredit(tfCredit9.getText(),tfCredit9);
+			int credit10 = checkCredit(tfCredit10.getText(),tfCredit10);
+			int credit11 = checkCredit(tfCredit11.getText(),tfCredit11);
+			int credit12 = checkCredit(tfCredit12.getText(),tfCredit12);
 			int totalCredit = credit1 + credit2 + credit3 + credit4 + credit5 + credit6 + credit7 + credit8 + credit9 + credit10 + credit11 + credit12;
 			
 			double value1 = gpv1*credit1;
@@ -1960,8 +1959,21 @@ public class Calculator extends JFrame implements ActionListener
 		}
 	}
 	
-	private void checkCredit(int credit) 
+	public int checkCredit(String creditString, JTextField tf)
 	{
+		int credit=0;
 		
+		try 
+		{
+			credit = Integer.parseInt(creditString);
+			tf.setForeground(Color.black);
+		}
+		catch (NumberFormatException x)
+		{
+			tf.setForeground(Color.red);
+			JOptionPane.showMessageDialog(null, "Please enter a supported credit value for example 5, 7, 10 etc.", "Unsupported Credit.", JOptionPane.WARNING_MESSAGE);
+		}
+		
+		return credit;
 	}
 }
