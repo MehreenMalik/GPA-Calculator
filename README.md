@@ -1,7 +1,5 @@
 # GPA-Calculator
-GPA calculator.
-<br>
-Created by Mehreen Malik on 15th April 2018. 
+GPA calculator created by Mehreen Malik. 
 <br>
 To run an executable version of the program download the jar from the latest release. 
 <br>
